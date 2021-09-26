@@ -6,14 +6,12 @@ public class RestaurantService {
     private static List<Restaurant> restaurants = new ArrayList<>();
 
     public Restaurant findRestaurantByName(String restaurantName) throws restaurantNotFoundException {
-
         for(Restaurant res: restaurants) {
             if (res.getName().equalsIgnoreCase(restaurantName)) {
                 return res;
             }
         }
         throw new restaurantNotFoundException(restaurantName);
-
     }
 
 

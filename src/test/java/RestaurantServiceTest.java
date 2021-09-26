@@ -9,11 +9,11 @@ class RestaurantServiceTest {
 
     RestaurantService service = new RestaurantService();
     Restaurant restaurant;
-
     private void addRestaurant() {
         LocalTime openingTime = LocalTime.parse("10:30:00");
         LocalTime closingTime = LocalTime.parse("22:00:00");
         restaurant = service.addRestaurant("Foody's Cafe","Chennai",openingTime,closingTime);
+
     }
 
     @Test
