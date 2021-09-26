@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RestaurantTest {
     Restaurant restaurant;
-
     private void createRestaurant(LocalTime openingTime, LocalTime closingTime) {
         restaurant =new Restaurant("Amelie's cafe","Chennai",openingTime,closingTime);
     }
