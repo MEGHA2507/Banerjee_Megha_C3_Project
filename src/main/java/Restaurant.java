@@ -64,4 +64,17 @@ public class Restaurant {
         return name;
     }
 
+
+    public int getOrderPrice(String[] selectedItems){
+        int i, orderPrice = 0;
+        for(i=0; i< selectedItems.length; i++){
+            for(Item item : menu){
+                if(item.getName().equalsIgnoreCase(selectedItems[i])){
+                    Item itemFound =  findItemByName(selectedItems[i]);
+                    orderPrice = orderPrice + itemFound.getPrice();
+                }
+            }
+        }
+        return orderPrice;
+    }
 }

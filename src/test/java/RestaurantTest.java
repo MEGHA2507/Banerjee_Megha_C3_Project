@@ -9,6 +9,8 @@ class RestaurantTest {
     Restaurant restaurant;
     private void createRestaurant(LocalTime openingTime, LocalTime closingTime) {
         restaurant =new Restaurant("Amelie's cafe","Chennai",openingTime,closingTime);
+        restaurant.addToMenu("Sweet corn soup",119);
+        restaurant.addToMenu("Vegetable lasagne", 269);
     }
 
     @Test
@@ -59,4 +61,19 @@ class RestaurantTest {
         assertThrows(itemNotFoundException.class,
                 ()->restaurant.removeFromMenu("French fries"));
     }
+
+    @Test
+    public void calculateOrderPrice_for_items_when_selectedItems_In_menu(){
+        String[] selectedItems = {"Sweet corn soup","Vegetable lasagne"};
+        createRestaurant(LocalTime.parse("09:00:00"), LocalTime.parse("22:00:00"));
+        assertEquals(388, restaurant.getOrderPrice(selectedItems));
+    }
+
+    @Test
+    public void return0_from_calculateOrderPrice_for_items_when_noItems_selected_or_item_not_present_in_menu(){
+        String[] selectedItems = {"Baby corn soup","Vegetable pasta"};
+        createRestaurant(LocalTime.parse("09:00:00"), LocalTime.parse("22:00:00"));
+        assertEquals(0, restaurant.getOrderPrice(selectedItems));
+    }
+
 }
